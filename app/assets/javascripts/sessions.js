@@ -6,5 +6,4 @@ $('#login_button').on('click', function(e) {
   $('#login_menu').toggle();
 });
 
-
 });

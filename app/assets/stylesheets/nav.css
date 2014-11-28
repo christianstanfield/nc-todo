@@ -11,12 +11,12 @@ nav ul li {
   display: inline-block;
 }
 
-nav ul li a:first-child {
+#login_button {
   border-radius: 5px 0px 0px 5px;
   margin-right: -5px;
 }
 
-nav ul li a:last-child {
+#signup_button {
   border-radius: 0px 5px 5px 0px;
 }
 
@@ -28,13 +28,13 @@ nav ul li a {
   font-weight: bold;
 }
 
-#login_menu {
+#login_menu, #signup_menu {
   display: none;
   background-color: #ddeef6;
   position: absolute;
   width: 210px;
   padding: 12px;
-  right: -5px;
+  right: 0px;
   margin-top: 5px;
   border-radius: 5px 0px 5px 5px;
 }
@@ -47,7 +47,6 @@ nav input {
 
 nav input[type=submit] {
   background-color: #88bbd4;
-  margin-left: 10px;
   color: #fff;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
