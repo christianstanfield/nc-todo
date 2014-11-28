@@ -5,8 +5,24 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+<nav>
+<ul>
+  <li><%= link_to 'Login', '#', id: 'login_button' %>
+    <ul id='login_menu'>
+      <%= form_for :session, url: sessions_path do |f| %>
+      <li><%= f.text_field :email, placeholder: 'Email' %></li>
+      <li><%= f.password_field :password, placeholder: 'Password' %></li>
+      <li><%= f.submit 'Login', id: 'login_submit' %></li>
+      <% end %>
+    </ul>
+  </li>
+  <li><%= link_to 'Signup', '#', id: 'signup_button' %></li>
+</ul>
+</nav>
 
 <%= yield %>
 
