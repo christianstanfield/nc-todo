@@ -9,8 +9,6 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      @new_user_errors = @user.errors.messages
-      # p @new_user_errors
       render 'sessions/new'
     end
   end
