@@ -6,13 +6,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(id_nc: params[:id], email: params[:email], api_token: params[:api_token])
-    # @user = User.new(user_params)
+    @user = User.new(user_params) # overwrites id, is this a problem? 
+    @user.id_nc = user_params[:id]
     if @user.save
       session[:user_id] = @user.id
       redirect_to @user
     else
-      @new_user_errors = @user.errors.messages
+      @new_user_errors = @user.errors.messages # come back to this
       # p @new_user_errors
       render 'sessions/new'
     end

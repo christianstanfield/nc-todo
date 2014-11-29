@@ -26,7 +26,9 @@ $.ajax({
   success: function(response){
     $('#signup_menu').toggle();
     $('#signup_button').toggleClass('clicked');
-    $.post(url, response);
+    $.post(url, response, function(response) {
+      $('body').html(response);
+    });
   },
   error: function(response){
     var resp_error = 'Email ' + response.responseJSON.email + '<br><br>';

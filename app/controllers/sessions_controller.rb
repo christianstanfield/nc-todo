@@ -3,8 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(id_nc: params[:id])
-    # @user = User.new(user_params)
+    @user = User.find_by(id_nc: session_params[:id])
     if @user
       session[:user_id] = @user.id
       redirect_to @user
@@ -13,13 +12,14 @@ class SessionsController < ApplicationController
     end
   end
 
-  def delete
-
+  def destroy
+    session.clear
+    redirect_to root_path
   end
 
   private
 
-  def user_params
+  def session_params
     params.permit(:id, :email, :api_token)
   end
 end

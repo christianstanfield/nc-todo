@@ -9,6 +9,15 @@
 </head>
 <body>
 
+<% if session[:user_id] %>
+<nav>
+  <ul>
+    <li><%= link_to 'Logout', session_path(current_user), method: :delete, id: 'logout_button' %></li>
+  </ul>
+</nav>
+
+<% else %>
+
 <nav>
 <ul>
   <li><%= link_to 'Login', '#', id: 'login_button' %>
@@ -32,6 +41,7 @@
   </li>
 </ul>
 </nav>
+<% end %>
 
 <%= yield %>
 
