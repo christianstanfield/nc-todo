@@ -11,6 +11,7 @@ $('#signup_menu form').on('submit', function(e) {
   $('#signup_menu').toggle();
   $('#signup_button').toggleClass('clicked');
 
+  var url = $(this).attr('action');
   var data = $(this).serialize(); // fix this section later
   var data_array = data.split('&');
   var email = data_array[2].replace('user%5Bemail%5D=','');
@@ -23,6 +24,9 @@ $.ajax({
   type: 'POST',
   contentType: 'application/json',
   success: function(response){
+
+    $.post(url, response);
+
     console.log('success!');
     console.log(response);
   },

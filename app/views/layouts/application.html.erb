@@ -23,7 +23,7 @@
 
   <li><%= link_to 'Signup', '#', id: 'signup_button' %>
     <ul id='signup_menu'>
-      <%= form_for :user, url: 'http://recruiting-api.nextcapital.com/users' do |f| %>
+      <%= form_for :user, url: users_path do |f| %>
       <li><%= f.text_field :email, placeholder: 'Email' %></li>
       <li><%= f.password_field :password, placeholder: 'Password' %></li>
       <li><%= f.submit 'Signup', id: 'signup_submit' %></li>

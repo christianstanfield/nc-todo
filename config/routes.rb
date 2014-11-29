@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :delete]
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
