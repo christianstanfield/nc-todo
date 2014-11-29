@@ -14,8 +14,8 @@
   <li><%= link_to 'Login', '#', id: 'login_button' %>
     <ul id='login_menu'>
       <%= form_for :session, url: sessions_path do |f| %>
-      <li><%= f.text_field :email, placeholder: 'Email' %></li>
-      <li><%= f.password_field :password, placeholder: 'Password' %></li>
+      <li><%= f.text_field :email, placeholder: 'Email', size: 14 %></li>
+      <li><%= f.password_field :password, placeholder: 'Password', size: 14 %></li>
       <li><%= f.submit 'Login', id: 'login_submit' %></li>
       <% end %>
     </ul>
@@ -24,8 +24,8 @@
   <li><%= link_to 'Signup', '#', id: 'signup_button' %>
     <ul id='signup_menu'>
       <%= form_for :user, url: users_path do |f| %>
-      <li><%= f.text_field :email, placeholder: 'Email' %></li>
-      <li><%= f.password_field :password, placeholder: 'Password' %></li>
+      <li><%= f.text_field :email, placeholder: 'Email', size: 14 %></li>
+      <li><%= f.password_field :password, placeholder: 'Password', size: 14 %></li>
       <li><%= f.submit 'Signup', id: 'signup_submit' %></li>
       <% end %>
     </ul>

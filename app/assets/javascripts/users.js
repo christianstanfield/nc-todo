@@ -3,13 +3,13 @@ $(document).ready(function() {
 $('#signup_button').on('click', function(e) {
   e.preventDefault(); // needs default functionality
   $('#signup_button').toggleClass('clicked');
+  $('#login_button').removeClass('clicked');
   $('#signup_menu').toggle();
+  $('#login_menu').hide();
 });
 
 $('#signup_menu form').on('submit', function(e) {
   e.preventDefault(); // needs default functionality
-  $('#signup_menu').toggle();
-  $('#signup_button').toggleClass('clicked');
 
   var url = $(this).attr('action');
   var data = $(this).serialize(); // fix this section later
@@ -24,15 +24,13 @@ $.ajax({
   type: 'POST',
   contentType: 'application/json',
   success: function(response){
-
+    $('#signup_menu').toggle();
+    $('#signup_button').toggleClass('clicked');
     $.post(url, response);
-
-    console.log('success!');
-    console.log(response);
   },
   error: function(response){
-    console.log('error');
-    console.log(response);
+    var resp_error = 'Email ' + response.responseJSON.email + '<br><br>';
+    $('#signup_menu form').prepend(resp_error);
   }
 });
 

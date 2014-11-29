@@ -16,15 +16,10 @@ class UsersController < ApplicationController
       # p @new_user_errors
       render 'sessions/new'
     end
-
-    # puts params[:id]
-    # puts params[:email]
-    # puts params[:api_token]
   end
 
   def show
     @user = current_user
-
   end
 
   private
@@ -32,5 +27,4 @@ class UsersController < ApplicationController
   def user_params
     params.permit(:id, :email, :api_token)
   end
-
 end
