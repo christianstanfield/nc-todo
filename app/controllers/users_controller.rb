@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params) # overwrites id, is this a problem? 
+    @user = User.new(user_params) # overwrites id, is this a problem?
     @user.id_nc = user_params[:id]
     if @user.save
       session[:user_id] = @user.id

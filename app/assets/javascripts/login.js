@@ -51,10 +51,7 @@ function submitMenu(menu, user) {
 
       user.initialize(response);
 
-      // $.post(url, user, function(response) {
-      //   $('body').html(response);
-      // });
-      sessionCreate(user);
+      sessionCreate(url, user);
     },
 
     error: function(response) { // duplicating error messages
