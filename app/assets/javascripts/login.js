@@ -20,6 +20,7 @@ function toggleNav(menu) {
 function submitMenu(menu) {
   var url = $(menu).attr('action');
   var data = $(menu).serialize();
+
   var data_array = data.split('&');
   var clicked;
   var ncUrl;
@@ -49,19 +50,18 @@ function submitMenu(menu) {
       $(menuForm + '_menu').toggle();
       $(menuForm + '_button').toggleClass('clicked');
 
-      var user = new User();
-      user.initialize(response); // combine these
+      var user = new User(response);
       sessionCreate(url, user);
     },
 
-    error: function(response) { // duplicating error messages
+    error: function(response) {
       if (url === '/sessions') {
       var resp_error = response.responseJSON.error + '<br><br>';
-      $('#login_menu form').prepend(resp_error);
+      $('#login_error').html(resp_error);
       }
       if (url === '/users') {
         var resp_error = 'Email ' + response.responseJSON.email + '<br><br>';
-        $('#signup_menu form').prepend(resp_error);
+        $('#signup_error').html(resp_error);
       }
     }
   });

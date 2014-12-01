@@ -47,6 +47,7 @@ nav input {
   padding: 4px;
   border-radius: 3px;
   border: 1px solid #88bbd4;
+  margin: 1px;
 }
 
 nav input[type=submit] {
@@ -71,4 +72,8 @@ nav input[type=submit]:hover {
   text-shadow: 0 0 5px #88bbd4;
   -moz-text-shadow: 0 0 5px #88bbd4;
   -webkit-text-shadow: 0 0 5px #88bbd4;
+}
+
+#signup_error, #login_error {
+  color: red;
 }

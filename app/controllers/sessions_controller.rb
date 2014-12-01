@@ -20,11 +20,10 @@ class SessionsController < ApplicationController
     redirect_to @user
   end
 
-  def destroy # not working with preventDefault
+  def destroy 
     @user = current_user
     session.clear
     render json: @user
-    # redirect_to root_path
   end
 
   private

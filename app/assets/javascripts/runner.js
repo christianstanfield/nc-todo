@@ -22,7 +22,7 @@ $('#signup_menu form').on('submit', function(e) {
 
 $('#logout_button').on('click', function(event) {
   event.preventDefault();
-  event.stopPropagation(); // unsure why this is needed?
+  event.stopPropagation(); 
   endSession(event.originalEvent);
 });
 

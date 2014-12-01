@@ -1,8 +1,4 @@
-function User() {
-  this.id = null;
-}
-
-User.prototype.initialize = function(params) {
+function User(params) {
   this.id = params.id;
   this.email = params.email;
   this.api_token = params.api_token;
