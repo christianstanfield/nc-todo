@@ -1,0 +1,79 @@
+nav {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: .9em;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+#login_button {
+  border-radius: 5px 0px 0px 5px;
+  margin-right: -5px;
+}
+
+#signup_button {
+  border-radius: 0px 5px 5px 0px;
+}
+
+#logout_button {
+  border-radius: 5px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #88bbd4;
+  padding: 8px;
+  font-weight: bold;
+}
+
+#login_menu, #signup_menu {
+  display: none;
+  background-color: #ddeef6;
+  position: absolute;
+  width: 210px;
+  padding: 12px;
+  right: 0px;
+  margin-top: 5px;
+  border-radius: 5px 0px 5px 5px;
+}
+
+nav input {
+  padding: 4px;
+  border-radius: 3px;
+  border: 1px solid #88bbd4;
+  margin: 1px;
+}
+
+nav input[type=submit] {
+  background-color: #88bbd4;
+  color: #fff;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 6px;
+}
+
+#login_submit {
+  margin-left: 10px;
+}
+
+nav input[type=submit]:hover {
+  background-color: #36a7d4;
+  border: 1px solid #36a7d4;
+}
+
+.clicked {
+  background-color: #ddeef6;
+  text-shadow: 0 0 5px #88bbd4;
+  -moz-text-shadow: 0 0 5px #88bbd4;
+  -webkit-text-shadow: 0 0 5px #88bbd4;
+}
+
+#signup_error, #login_error {
+  color: red;
+}
