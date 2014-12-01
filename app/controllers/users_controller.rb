@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  include UsersHelper
-  before_filter :authorized?, only: [:show]
 
   def new
   end
@@ -10,17 +8,12 @@ class UsersController < ApplicationController
     @user.id = session_params[:id]
     @user.email = session_params[:email]
     @user.api_token = session_params[:api_token]
-
-    @todos = session_params[:todos] # empty for new user
+    @user.todos = session_params[:todos]
 
     @user.save
     session[:user_id] = @user.id
 
-    redirect_to @user
-  end
-
-  def show
-    @user = current_user
+    redirect_to user_todos_path(@user)
   end
 
   private
