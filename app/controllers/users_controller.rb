@@ -6,16 +6,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params) # overwrites id, is this a problem?
-    @user.id_nc = user_params[:id]
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to @user
-    else
-      @new_user_errors = @user.errors.messages # come back to this
-      # p @new_user_errors
-      render 'sessions/new'
-    end
+    @user = User.new
+    @user.id = session_params[:id]
+    @user.email = session_params[:email]
+    @user.api_token = session_params[:api_token]
+
+    @todos = session_params[:todos] # empty for new user
+
+    @user.save
+    session[:user_id] = @user.id
+
+    redirect_to @user
   end
 
   def show
@@ -24,7 +25,8 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.permit(:id, :email, :api_token)
+  def session_params
+    user_params = params.require(:user)
+    JSON.parse(user_params, symbolize_names: true)
   end
 end

@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-var user = new User();
-
 $('#login_button').on('click', function(e) {
   e.preventDefault();
   toggleNav(this);
@@ -14,12 +12,18 @@ $('#signup_button').on('click', function(e) {
 
 $('#login_menu form').on('submit', function(e) {
   e.preventDefault();
-  submitMenu(this, user);
+  submitMenu(this);
 });
 
 $('#signup_menu form').on('submit', function(e) {
   e.preventDefault();
-  submitMenu(this, user);
+  submitMenu(this);
+});
+
+$('#logout_button').on('click', function(event) {
+  event.preventDefault();
+  event.stopPropagation(); // unsure why this is needed?
+  endSession(event.originalEvent);
 });
 
 });

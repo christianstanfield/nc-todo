@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  require 'json'
+  include UsersHelper
 
   def new
   end
@@ -20,9 +20,11 @@ class SessionsController < ApplicationController
     redirect_to @user
   end
 
-  def destroy # tap into api also
+  def destroy # not working with preventDefault
+    @user = current_user
     session.clear
-    redirect_to root_path
+    render json: @user
+    # redirect_to root_path
   end
 
   private

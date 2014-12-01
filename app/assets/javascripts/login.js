@@ -17,7 +17,7 @@ function toggleNav(menu) {
   $(unclicked + '_menu').hide();
 }
 
-function submitMenu(menu, user) {
+function submitMenu(menu) {
   var url = $(menu).attr('action');
   var data = $(menu).serialize();
   var data_array = data.split('&');
@@ -49,8 +49,8 @@ function submitMenu(menu, user) {
       $(menuForm + '_menu').toggle();
       $(menuForm + '_button').toggleClass('clicked');
 
-      user.initialize(response);
-
+      var user = new User();
+      user.initialize(response); // combine these
       sessionCreate(url, user);
     },
 
