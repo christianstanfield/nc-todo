@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   include UsersHelper
-  skip_before_action :verify_authenticity_token # 422 (Unprocessable Entity) on re-login without page reload
 
   def new
   end

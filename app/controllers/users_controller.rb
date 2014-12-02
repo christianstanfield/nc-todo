@@ -4,12 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
-    @user.id = session_params[:id]
-    @user.email = session_params[:email]
-    @user.api_token = session_params[:api_token]
-    @user.todos = session_params[:todos]
-
+    @user = User.new(session_params)
     @user.save
     session[:user_id] = @user.id
 
