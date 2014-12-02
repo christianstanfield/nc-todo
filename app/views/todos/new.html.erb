@@ -1,8 +1,3 @@
 <h1>Todos#new</h1>
 
-<ul>
-  <%= form_for :todo, url: user_todos_path do |f| %>
-  <li><%= f.text_area :description, placeholder: 'Description' %></li>
-  <li><%= f.submit 'Create' %></li>
-  <% end %>
-</ul>
+<%= render partial: 'form', locals: { user: @user, todo: @todo } %>

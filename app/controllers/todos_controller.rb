@@ -8,6 +8,7 @@ class TodosController < ApplicationController
 
   def new
     @user = current_user
+    @todo = Todo.new
   end
 
   def create
@@ -16,13 +17,16 @@ class TodosController < ApplicationController
     redirect_to user_todos_path(@user)
   end
 
-  def show
-  end
-
   def edit
+    @user = current_user
+    @todo = Todo.find(params[:id])
   end
 
   def update
+    @user = current_user
+    @todo = Todo.find(params[:id])
+    @todo.update_attributes(description: todo_params[:description])
+    redirect_to user_todos_path(@user)
   end
 
   def destroy
