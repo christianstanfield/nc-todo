@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   include UsersHelper
-  before_filter :authorized?
+  before_filter :authorized?, :set_gon
 
   def index
     @user = current_user
@@ -36,5 +36,10 @@ class TodosController < ApplicationController
 
   def todo_params
     params.require(:todo).permit(:description)
+  end
+
+  def set_gon
+    gon.api_token = session[:api_token]
+    gon.user_id = session[:user_id]
   end
 end

@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 
     @user.save
     session[:user_id] = @user.id
+    session[:api_token] = @user.api_token
 
     redirect_to user_todos_path(@user)
   end

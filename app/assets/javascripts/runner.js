@@ -22,8 +22,18 @@ $('#signup_menu form').on('submit', function(e) {
 
 $('#logout_button').on('click', function(event) {
   event.preventDefault();
-  event.stopPropagation(); 
+  event.stopPropagation();
   endSession(event.originalEvent);
+});
+
+$('.edit_todo').on('submit', function(e) {
+  e.preventDefault();
+  submitTodosForm(this);
+});
+
+$('.new_todo').on('submit', function(e) {
+  e.preventDefault();
+  submitTodosForm(this);
 });
 
 });
