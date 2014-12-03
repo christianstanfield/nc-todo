@@ -34,6 +34,7 @@ $('.edit_todo').on('submit', function(e) {
 $('.new_todo').on('submit', function(e) {
   e.preventDefault();
   submitTodosForm(this);
+  getTodosIndex(this);
 });
 
 });

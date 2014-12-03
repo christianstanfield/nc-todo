@@ -13,8 +13,12 @@ class TodosController < ApplicationController
 
   def create
     @user = current_user
-    @user.todos << Todo.new(description: todo_params[:description], is_complete: false)
+    if request.xhr?
+      @user.todos.find_or_create_by(todo_ajax_params)
+    else
+      @user.todos << Todo.new(description: todo_params[:description], is_complete: false)
     redirect_to user_todos_path(@user)
+    end
   end
 
   def edit
@@ -36,6 +40,11 @@ class TodosController < ApplicationController
 
   def todo_params
     params.require(:todo).permit(:description)
+  end
+
+  def todo_ajax_params
+    ajax_params = params.require(:todo)
+    JSON.parse(ajax_params, symbolize_names: true)
   end
 
   def set_gon

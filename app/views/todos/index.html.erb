@@ -3,7 +3,5 @@
 
 <h2> Your Tasks: </h2>
 <% @user.todos.each do |todo| %>
-<h3><input type="checkbox" name="some_name" value=""> <%= link_to 'Edit', edit_user_todo_path(current_user, todo) %> <%= todo.description %></h3>
+<h3><input type="checkbox"> <%= link_to 'Edit', edit_user_todo_path(current_user, todo) %> <%= todo.description %></h3>
 <% end %>
-
-<!-- JS on click send to api -->
