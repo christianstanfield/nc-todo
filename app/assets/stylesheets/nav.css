@@ -1,6 +1,6 @@
 nav {
   position: absolute;
-  top: 5%;
+  top: 25px;
   right: 5%;
   font-family: 'Open Sans', sans-serif;
   font-size: .9em;
@@ -21,10 +21,15 @@ nav ul li {
 }
 
 #logout_button {
-  border-radius: 5px;
+  border-radius: 0px 5px 5px 0px;
 }
 
-nav ul li a {
+#welcome_nav {
+  border-radius: 5px 0px 0px 5px;
+  margin-right: -5px;
+}
+
+nav ul li a, #welcome_nav {
   text-decoration: none;
   color: #fff;
   background-color: #88bbd4;
@@ -34,7 +39,7 @@ nav ul li a {
 
 #login_menu, #signup_menu {
   display: none;
-  background-color: #ddeef6;
+  background-color: rgba(104, 131, 161, 0.95);
   position: absolute;
   width: 210px;
   padding: 12px;
@@ -68,12 +73,12 @@ nav input[type=submit]:hover {
 }
 
 .clicked {
-  background-color: #ddeef6;
+  background-color: rgba(104, 131, 161, 0.95);
   text-shadow: 0 0 5px #88bbd4;
   -moz-text-shadow: 0 0 5px #88bbd4;
   -webkit-text-shadow: 0 0 5px #88bbd4;
 }
 
 #signup_error, #login_error {
-  color: red;
+  color: white;
 }

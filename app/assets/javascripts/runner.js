@@ -42,4 +42,17 @@ $('input[type=checkbox]').on('click', function() {
   deleteTodo(this.id);
 });
 
+// Todo Nav //
+$('#create_task_link').on('click', function(e) {
+  e.preventDefault();
+  toggleCreateTodoNav();
+});
+
+$('.edit_task_link').on('click', function(e) {
+  e.preventDefault();
+  toggleEditTodoNav(this);
+});
+
+$('#todo_list').sortable();
+
 });

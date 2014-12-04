@@ -1,6 +1,6 @@
 <ul>
   <%= form_for [user, todo] do |f| %>
-  <li><%= f.text_area :description, placeholder: 'Description' %></li>
+  <li><%= f.text_field :description, placeholder: 'Description' %></li>
   <li><%= f.submit %></li>
   <% end %>
 </ul>
