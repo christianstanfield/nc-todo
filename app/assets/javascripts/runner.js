@@ -48,4 +48,6 @@ $('#create_task_link').on('click', function(e) {
   toggleCreateTodoNav();
 });
 
+$('#todo_list').sortable();
+
 });
