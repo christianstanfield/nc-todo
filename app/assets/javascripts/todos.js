@@ -72,3 +72,8 @@ function deleteTodo(todoID) {
     }
   });
 }
+
+function toggleCreateTodoNav() {
+  // $('#create_task_link').toggleClass('clicked');
+  $('#create_task_menu').toggle();
+}

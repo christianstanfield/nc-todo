@@ -1,8 +1,11 @@
 <%= link_to 'Create a Task', new_user_todo_path(current_user), id: 'create_task_link' %>
+<ul id='create_task_menu'>
+  <li><%= render partial: 'form', locals: { user: @user, todo: @todo } %></li>
+</ul>
 
 <div id="container">
 
-<h2 id='todo_list_title'> Your Tasks: </h2>
+<h2> Your Tasks: </h2>
 <div id="todo_title_border"></div>
 <ul id='todo_list'>
   <% @user.todos.each do |todo| %>

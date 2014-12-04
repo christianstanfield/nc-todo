@@ -4,6 +4,7 @@ class TodosController < ApplicationController
 
   def index
     @user = current_user
+    @todo = Todo.new
   end
 
   def new

@@ -1,3 +1,5 @@
+// Create new task
+
 #create_task_link {
   position: absolute;
   top: 35px;
@@ -12,6 +14,47 @@
   border-radius: 5px;
 }
 
+#create_task_menu {
+  display: none;
+  list-style-type: none;
+  background-color: #ddeef6;
+  position: absolute;
+  width: 190px;
+  padding: 12px;
+  left: 45px;
+  top: 51px;
+  border-radius: 0px 5px 5px 5px;
+}
+
+#create_task_menu ul {
+  padding-left: 0px;
+}
+
+#create_task_menu li {
+  list-style-type: none;
+  padding: 4px 4px 1px 0px;
+}
+
+#create_task_menu input {
+  border-radius: 3px;
+  border: 1px solid #88bbd4;
+  margin: 1px;
+}
+
+#create_task_menu input[type=submit] {
+  background-color: #88bbd4;
+  color: #fff;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#create_task_menu input[type=submit]:hover {
+  background-color: #36a7d4;
+  border: 1px solid #36a7d4;
+}
+
+
+// Todo menu
 body {
   margin-top: 100px;
 }
@@ -23,7 +66,6 @@ body {
   padding: 5px;
   background-color :#ddeef6;
   border-radius: 5px;
-
   // border gradients
   border-top: 3px solid #438FB5;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#438FB5), to(transparent));
@@ -43,7 +85,7 @@ body {
   background-repeat: no-repeat;
 }
 
-#todo_list_title {
+#container h2 {
   color: #438FB5;
 }
 
