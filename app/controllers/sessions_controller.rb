@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     @user.email = session_params[:email]
     @user.api_token = session_params[:api_token]
     @user.todos.destroy_all
-    
+
     todos = session_params[:todos]
     todos.each do |todo|
       @user.todos << Todo.new(todo)
@@ -22,9 +22,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @user = current_user
     session.clear
-    render json: @user
+    redirect_to root_path
   end
 
   private

@@ -54,7 +54,7 @@ function submitMenu(menu) {
 
       $.get('http://recruiting-api.nextcapital.com/users/' + user.id + '/todos.json?api_token=' + user.api_token, function (response) {
       user.getTodos(response);
-      sessionCreate(url, user);
+      createSession(url, user);
       })
     },
 

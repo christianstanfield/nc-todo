@@ -20,10 +20,10 @@ $('#signup_menu form').on('submit', function(e) {
   submitMenu(this);
 });
 
-$('#logout_button').on('click', function(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  endSession(event.originalEvent);
+$('#logout_button').on('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  endSession(e.originalEvent);
 });
 
 // Todo CRUD //
