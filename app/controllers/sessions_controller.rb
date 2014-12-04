@@ -8,19 +8,20 @@ class SessionsController < ApplicationController
     @user = User.find_or_create_by(id: session_params[:id])
     @user.email = session_params[:email]
     @user.api_token = session_params[:api_token]
-
-    @todos = session_params[:todos]
-    # @todos.each do |todo|
-      # Come back to me!
-    # end
-
+    @user.todos.destroy_all
+    
+    todos = session_params[:todos]
+    todos.each do |todo|
+      @user.todos << Todo.new(todo)
+    end
     @user.save
     session[:user_id] = @user.id
+    session[:api_token] = @user.api_token
 
-    redirect_to @user
+    redirect_to user_todos_path(@user)
   end
 
-  def destroy 
+  def destroy
     @user = current_user
     session.clear
     render json: @user

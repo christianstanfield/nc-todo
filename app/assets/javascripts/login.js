@@ -51,7 +51,11 @@ function submitMenu(menu) {
       $(menuForm + '_button').toggleClass('clicked');
 
       var user = new User(response);
+
+      $.get('http://recruiting-api.nextcapital.com/users/' + user.id + '/todos.json?api_token=' + user.api_token, function (response) {
+      user.getTodos(response);
       sessionCreate(url, user);
+      })
     },
 
     error: function(response) {
