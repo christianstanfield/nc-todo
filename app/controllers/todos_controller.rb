@@ -13,12 +13,8 @@ class TodosController < ApplicationController
 
   def create
     @user = current_user
-    if request.xhr?
-      @user.todos.find_or_create_by(todo_ajax_params)
-    else
-      @user.todos << Todo.new(description: todo_params[:description], is_complete: false)
+    @user.todos << Todo.new(todo_ajax_params)
     redirect_to user_todos_path(@user)
-    end
   end
 
   def edit
@@ -29,18 +25,16 @@ class TodosController < ApplicationController
   def update
     @user = current_user
     @todo = Todo.find(params[:id])
-    @todo.update_attributes(description: todo_params[:description])
+    @todo.update_attributes(todo_ajax_params)
     redirect_to user_todos_path(@user)
   end
 
   def destroy
+    @user = current_user
+    @user.todos.destroy(params[:id])
   end
 
   private
-
-  def todo_params
-    params.require(:todo).permit(:description)
-  end
 
   def todo_ajax_params
     ajax_params = params.require(:todo)

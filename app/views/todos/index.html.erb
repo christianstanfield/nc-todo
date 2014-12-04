@@ -1,7 +1,8 @@
-<h2>Welcome <%= @user.email %> | <%= @user.api_token %> </h2>
+<h2>Token: <%= @user.api_token %> </h2>
+<h2>Welcome <%= @user.email %> </h2>
 <%= link_to 'Create a Task', new_user_todo_path(current_user) %>
 
 <h2> Your Tasks: </h2>
 <% @user.todos.each do |todo| %>
-<h3><input type="checkbox"> <%= link_to 'Edit', edit_user_todo_path(current_user, todo) %> <%= todo.description %></h3>
+<h3><input type="checkbox" id=<%= todo.id %> > <%= link_to 'Edit', edit_user_todo_path(current_user, todo) %> <%= todo.description %></h3>
 <% end %>
