@@ -39,7 +39,7 @@ nav ul li a, #welcome_nav {
 
 #login_menu, #signup_menu {
   display: none;
-  background-color: #ddeef6;
+  background-color: rgba(104, 131, 161, 0.95);
   position: absolute;
   width: 210px;
   padding: 12px;
@@ -73,12 +73,12 @@ nav input[type=submit]:hover {
 }
 
 .clicked {
-  background-color: #ddeef6;
+  background-color: rgba(104, 131, 161, 0.95);
   text-shadow: 0 0 5px #88bbd4;
   -moz-text-shadow: 0 0 5px #88bbd4;
   -webkit-text-shadow: 0 0 5px #88bbd4;
 }
 
 #signup_error, #login_error {
-  color: red;
+  color: white;
 }

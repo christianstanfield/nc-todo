@@ -21,6 +21,7 @@ class TodosController < ApplicationController
   def edit
     @user = current_user
     @todo = Todo.find(params[:id])
+    # render "todos/edit", layout: false # note this breaks json parsing
   end
 
   def update

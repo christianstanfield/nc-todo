@@ -74,6 +74,13 @@ function deleteTodo(todoID) {
 }
 
 function toggleCreateTodoNav() {
-  // $('#create_task_link').toggleClass('clicked');
   $('#create_task_menu').toggle();
+}
+
+function toggleEditTodoNav(link) {
+  $.get(link.href, function (response) {
+    $(link).toggleClass('inactiveLink');
+    response = $(response).not('nav');
+    $(link).parent().append(response);
+  })
 }

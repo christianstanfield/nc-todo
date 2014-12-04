@@ -1,3 +1,13 @@
+// Background image
+
+body {
+  background: url('/assets/chi_background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 // Create new task
 
 #create_task_link {
@@ -17,11 +27,11 @@
 #create_task_menu {
   display: none;
   list-style-type: none;
-  background-color: #ddeef6;
+  background-color: rgba(136, 187, 212, 0.93);
   position: absolute;
   width: 190px;
   padding: 12px;
-  left: 45px;
+  left: 5%;
   top: 51px;
   border-radius: 0px 5px 5px 5px;
 }
@@ -35,20 +45,20 @@
   padding: 4px 4px 1px 0px;
 }
 
-#create_task_menu input {
+#create_task_menu input, #todo_list input {
   border-radius: 3px;
   border: 1px solid #88bbd4;
   margin: 1px;
 }
 
-#create_task_menu input[type=submit] {
-  background-color: #88bbd4;
+#create_task_menu input[type=submit], #todo_list input[type=submit] {
+  background-color: #438FB5;
   color: #fff;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
 }
 
-#create_task_menu input[type=submit]:hover {
+#create_task_menu input[type=submit]:hover, #todo_list input[type=submit]:hover {
   background-color: #36a7d4;
   border: 1px solid #36a7d4;
 }
@@ -64,7 +74,7 @@ body {
   margin: 0 auto;
   text-align: center;
   padding: 5px;
-  background-color :#ddeef6;
+  background-color: rgba(162, 198, 242, 0.92);
   border-radius: 5px;
   // border gradients
   border-top: 3px solid #438FB5;
@@ -109,4 +119,9 @@ body {
   text-decoration: none;
   color: rgb(41, 120, 187);
   padding: 5px;
+}
+
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
 }

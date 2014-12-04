@@ -9,7 +9,7 @@
 <div id="todo_title_border"></div>
 <ul id='todo_list'>
   <% @user.todos.each do |todo| %>
-  <li><input type="checkbox" id=<%= todo.id %> > <%= link_to '', edit_user_todo_path(current_user, todo), class: 'fa fa-pencil' %> <%= todo.description %></li>
+  <li><input type="checkbox" id=<%= todo.id %> > <%= link_to '', edit_user_todo_path(current_user, todo), class: 'fa fa-pencil edit_task_link' %> <%= todo.description %></li>
   <% end %>
 </ul>
 
