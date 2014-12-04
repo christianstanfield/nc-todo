@@ -1,4 +1,4 @@
-function sessionCreate(url, user) {
+function createSession(url, user) {
 
   $.ajax({
     url: url,
@@ -16,29 +16,20 @@ function sessionCreate(url, user) {
 function endSession(event) {
 
   $.ajax({
-    url: event.srcElement.href,
-    type: event.srcElement.dataset.method,
-    success: function(response) {
-      endSessionAPI(response);
-    }
-  });
-}
-
-function endSessionAPI(user) {
-
-  $.ajax({
     url: 'http://recruiting-api.nextcapital.com/users/sign_out',
-    data: '{"api_token": "' + user.api_token + '", "user_id": ' + user.id + '}',
+    data: '{"api_token": "' + gon.api_token + '", "user_id": ' + gon.user_id + '}',
     type: 'DELETE',
     contentType: 'application/json',
     success: function(response) {
-      redirectRoot();
-    }
-  });
-}
 
-function redirectRoot() {
-  $.get('/', function(response) {
-    $('body').html(response);
+      $.ajax({
+        url: event.srcElement.href,
+        type: 'POST',
+        data: { _method: 'delete' },
+        success: function(response) {
+          $('body').html(response);
+        }
+      });
+    }
   });
 }
