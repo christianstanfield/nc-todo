@@ -39,4 +39,15 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'byebug', group: [:development, :test]
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'byebug'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'faker'
+  gem 'nyan-cat-formatter'
+  gem 'jasmine'
+  gem 'shoulda-matchers'
+end
