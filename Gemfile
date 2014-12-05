@@ -49,4 +49,5 @@ group :test, :development do
   gem 'faker'
   gem 'nyan-cat-formatter'
   gem 'jasmine'
+  gem 'shoulda-matchers'
 end
