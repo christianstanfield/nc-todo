@@ -48,23 +48,26 @@ function submitMenu(menu) {
     type: 'POST',
     contentType: 'application/json',
 
-    success: function(response) {
+    success: function(user) {
       $(menuForm + '_menu').toggle();
       $(menuForm + '_button').toggleClass('clicked');
 
       // save user params in cookie
-      var user = new User(response);
-      document.cookie = "user_id=" + response.id;
-      document.cookie = "user_email=" + response.email;
-      document.cookie = "user_api_token=" + response.api_token;
+      // var user = new User(user);
+      document.cookie = "user_id=" + user.id;
+      document.cookie = "user_email=" + user.email;
+      document.cookie = "user_api_token=" + user.api_token;
 
-      // render todos index
+      // get todos index page, replace html body
+      $.get('/users/' + user.id + '/todos', function (response) {
+        $('body').html(response);
       // renderTodos();
+      });
 
-      $.get('http://recruiting-api.nextcapital.com/users/' + user.id + '/todos.json?api_token=' + user.api_token, function (response) {
-      user.getTodos(response);
-      createSession(url, user);
-    });
+    //   $.get('http://recruiting-api.nextcapital.com/users/' + user.id + '/todos.json?api_token=' + user.api_token, function (response) {
+    //   user.getTodos(response);
+    //   createSession(url, user);
+    // });
     },
 
     error: function(response) {
