@@ -27,7 +27,7 @@ $('#logout_button').on('click', function(e) {
 });
 
 // Todo CRUD //
-$('.edit_todo').on('submit', function(e) {
+$('body').on('submit', '.edit_todo', function(e) {
   e.preventDefault();
   submitUpdateTodo(this);
 });
@@ -37,9 +37,8 @@ $('.new_todo').on('submit', function(e) {
   submitNewTodo(this);
 });
 
-$('input[type=checkbox]').on('click', function() {
-  $(this).parent().fadeOut();
-  deleteTodo(this.id);
+$('body').on('click', 'input[type=checkbox]', function() {
+  deleteTodo(this);
 });
 
 // Todo Nav //
@@ -48,7 +47,7 @@ $('#create_task_link').on('click', function(e) {
   toggleCreateTodoNav();
 });
 
-$('.edit_task_link').on('click', function(e) {
+$('body').on('click', '.edit_task_link', function(e) {
   e.preventDefault();
   toggleEditTodoNav(this);
 });

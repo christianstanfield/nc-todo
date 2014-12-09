@@ -11,4 +11,4 @@ User.prototype.getTodos = function (API_todos) {
       this.todos.push(API_todos[i]);
     }
   }
-}
+};

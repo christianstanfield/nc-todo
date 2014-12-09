@@ -6,9 +6,6 @@ function createSession(url, user) {
     data: { user: JSON.stringify(user) },
     success: function(response) {
       $('body').html(response);
-    },
-    error: function(response) {
-      console.log(response);
     }
   });
 }

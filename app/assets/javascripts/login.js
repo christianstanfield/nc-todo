@@ -21,6 +21,7 @@ function submitMenu(menu) {
   var url = $(menu).attr('action');
   var data = $(menu).serialize();
 
+  // parse rails form data
   var data_array = data.split('&');
   var clicked;
   var ncUrl;
@@ -40,6 +41,7 @@ function submitMenu(menu) {
   email = email.replace('%40','@');
   var password = data_array[3].replace(clicked + '%5Bpassword%5D=','');
 
+  // establish session with api
   $.ajax({
     url: 'http://recruiting-api.nextcapital.com' + ncUrl,
     data: '{"email": "' + email + '", "password": "' + password + '"}',
@@ -50,21 +52,29 @@ function submitMenu(menu) {
       $(menuForm + '_menu').toggle();
       $(menuForm + '_button').toggleClass('clicked');
 
+      // save user params in cookie
       var user = new User(response);
+      document.cookie = "user_id=" + response.id;
+      document.cookie = "user_email=" + response.email;
+      document.cookie = "user_api_token=" + response.api_token;
+
+      // render todos index
+      // renderTodos();
 
       $.get('http://recruiting-api.nextcapital.com/users/' + user.id + '/todos.json?api_token=' + user.api_token, function (response) {
       user.getTodos(response);
       createSession(url, user);
-      })
+    });
     },
 
     error: function(response) {
+      var resp_error;
       if (url === '/sessions') {
-      var resp_error = response.responseJSON.error + '<br><br>';
+        resp_error = response.responseJSON.error + '<br><br>';
       $('#login_error').html(resp_error);
       }
       if (url === '/users') {
-        var resp_error = 'Email ' + response.responseJSON.email + '<br><br>';
+        resp_error = 'Email ' + response.responseJSON.email + '<br><br>';
         $('#signup_error').html(resp_error);
       }
     }
