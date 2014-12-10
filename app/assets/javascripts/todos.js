@@ -34,7 +34,7 @@ function submitUpdateTodo(form) {
     success: function(response) {
       // add to list
       $(form).parent().find('.todo_text').text(description);
-      $(form).parent().find('.edit_task_link').toggleClass('inactiveLink');
+      $(form).parent().find('.edit_task_link').removeClass('inactiveLink');
       $(form).hide();
     }
   });
@@ -63,12 +63,12 @@ function toggleCreateTodoNav() {
 
 function toggleEditTodoNav(link) {
 
-    var value = $(link).parent().text();
-    $(link).toggleClass('inactiveLink');
-    $(link).parent().append(
-      '<form class="edit_todo">' +
-      '<li><input name="description" placeholder="Description" type="text" value="' + value + '"></li>' +
-      '<li><input name="commit" type="submit" value="Update Todo"></li></form>');
+  var value = $(link).parent().text();
+  $(link).toggleClass('inactiveLink');
+  $(link).parent().append(
+    '<form class="edit_todo">' +
+    '<li><input name="description" placeholder="Description" type="text" value="' + value + '"></li>' +
+    '<li><input name="commit" type="submit" value="Update Todo"></li></form>');
 }
 
 function renderTodos() {

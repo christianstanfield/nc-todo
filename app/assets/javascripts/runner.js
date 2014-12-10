@@ -20,7 +20,8 @@ $('#signup_menu form').on('submit', function(e) {
   submitMenu(this);
 });
 
-$('body').on('click', '#logout_button', function() {
+$('body').on('click', '#logout_button', function(e) {
+  e.stopImmediatePropagation();
   endSession();
 });
 
@@ -45,6 +46,7 @@ $('#create_task_link').on('click', function() {
 });
 
 $('body').on('click', '.edit_task_link', function(e) {
+  e.stopImmediatePropagation();
   toggleEditTodoNav(this);
 });
 
