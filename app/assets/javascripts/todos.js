@@ -2,7 +2,7 @@ function submitNewTodo(form) {
 
   // parse user input
   var data = $(form).serialize();
-  var description = data.replace('todo%5Bdescription%5D=','');
+  var description = data.replace('description=','');
   description = description.split('+').join(" ");
   // send to api
   $.ajax({
@@ -22,9 +22,9 @@ function submitUpdateTodo(form) {
 
   // parse user input
   var data = $(form).serialize();
-  var description = data.replace('todo%5Bdescription%5D=','');
+  var description = data.replace('description=','');
   description = description.split('+').join(" ");
-  var todo_id = $(form).parent().siblings()[0].firstChild.id
+  var todo_id = $(form).parent().find('input[type=checkbox]').attr("id");
   // send to api
   $.ajax({
     url: 'http://recruiting-api.nextcapital.com/users/' + getCookie('user_id') + '/todos/' + todo_id,
@@ -32,9 +32,6 @@ function submitUpdateTodo(form) {
     type: 'PUT',
     contentType: 'application/json',
     success: function(response) {
-      //
-      console.log(response);
-      console.log('http://recruiting-api.nextcapital.com/users/' + getCookie('user_id') + '/todos/' + todo_id);
       // add to list
       $(form).parent().find('.todo_text').text(description);
       $(form).parent().find('.edit_task_link').toggleClass('inactiveLink');
@@ -68,7 +65,10 @@ function toggleEditTodoNav(link) {
 
     var value = $(link).parent().text();
     $(link).toggleClass('inactiveLink');
-    $(link).parent().append('<form class="edit_todo"><li><input name="todo[description]" placeholder="Description" type="text" value="' + value + '"></li><li><input name="commit" type="submit" value="Update Todo"></li></form>');
+    $(link).parent().append(
+      '<form class="edit_todo">' +
+      '<li><input name="description" placeholder="Description" type="text" value="' + value + '"></li>' +
+      '<li><input name="commit" type="submit" value="Update Todo"></li></form>');
 }
 
 function renderTodos() {
@@ -78,7 +78,13 @@ function renderTodos() {
 }
 
 function renderCreateTaskMenu() {
-  $('#create_task_menu').append('<form class="new_todo"><li><input name="todo[description]" placeholder="Description" type="text"></li><li><input name="commit" type="submit" value="Create Todo"></li></form>');
+  // render button
+  $('body').prepend('<a href="#" id="create_task_link">Create a Task</a>');
+  // render menu
+  $('#create_task_menu').append(
+    '<form class="new_todo">' +
+    '<li><input name="description" placeholder="Description" type="text"></li>' +
+    '<li><input name="commit" type="submit" value="Create Todo"></li></form>');
 }
 
 function renderTodoList() {
@@ -93,7 +99,10 @@ function renderTodoList() {
 }
 
 function addTodoToList(todo) {
-  $('#todo_list').prepend('<li><input type="checkbox" id="' + todo["id"] + '"><a class="fa fa-pencil edit_task_link" href="#"></a><span class="todo_text">' + todo["description"] + '</span></li>');
+  $('#todo_list').prepend(
+    '<li><input type="checkbox" id="' + todo["id"] + '">' +
+    '<a class="fa fa-pencil edit_task_link" href="#"></a>' +
+    '<span class="todo_text">' + todo["description"] + '</span></li>');
 }
 
 function getCookie(name) {
@@ -107,4 +116,11 @@ function getCookie(name) {
     if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
   }
   return null;
+}
+
+function deleteCookie(name) {
+  // Delete a cookie by setting the date of expiry to yesterday
+  date = new Date();
+  date.setDate(date.getDate() -1);
+  document.cookie = escape(name) + '=;expires=' + date;
 }

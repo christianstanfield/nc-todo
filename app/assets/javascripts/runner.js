@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
 // Nav buttons //
-$('#login_button').on('click', function(e) {
+$('#login_button').on('click', function() {
   toggleNav(this);
 });
 
-$('#signup_button').on('click', function(e) {
+$('#signup_button').on('click', function() {
   toggleNav(this);
 });
 
@@ -20,10 +20,8 @@ $('#signup_menu form').on('submit', function(e) {
   submitMenu(this);
 });
 
-$('#logout_button').on('click', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  endSession(e.originalEvent);
+$('body').on('click', '#logout_button', function() {
+  endSession();
 });
 
 // Todo CRUD //
@@ -42,13 +40,11 @@ $('body').on('click', 'input[type=checkbox]', function() {
 });
 
 // Todo Nav //
-$('#create_task_link').on('click', function(e) {
-  e.preventDefault();
+$('#create_task_link').on('click', function() {
   toggleCreateTodoNav();
 });
 
 $('body').on('click', '.edit_task_link', function(e) {
-  e.preventDefault();
   toggleEditTodoNav(this);
 });
 

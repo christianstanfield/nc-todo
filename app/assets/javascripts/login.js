@@ -20,26 +20,22 @@ function toggleNav(menu) {
 function submitMenu(menu) {
   var url = $(menu).attr('action');
   var data = $(menu).serialize();
-
   // parse rails form data
   var data_array = data.split('&');
-  var clicked;
+  var email = data_array[0].replace('email=','');
+  email = email.replace('%40','@');
+  var password = data_array[1].replace('password=','');
+
   var ncUrl;
   var menuForm;
   if (url === '/sessions') {
-    clicked = 'session';
     ncUrl = '/users/sign_in';
     menuForm = '#login';
   }
   if (url === '/users') {
-    clicked = 'user';
     ncUrl = '/users';
     menuForm = '#signup';
   }
-
-  var email = data_array[2].replace(clicked + '%5Bemail%5D=','');
-  email = email.replace('%40','@');
-  var password = data_array[3].replace(clicked + '%5Bpassword%5D=','');
 
   // establish session with api
   $.ajax({
@@ -53,21 +49,11 @@ function submitMenu(menu) {
       $(menuForm + '_button').toggleClass('clicked');
 
       // save user params in cookie
-      // var user = new User(user);
       document.cookie = "user_id=" + user.id;
       document.cookie = "user_email=" + user.email;
       document.cookie = "user_api_token=" + user.api_token;
-
-      // get todos index page, replace html body
-      $.get('/users/' + user.id + '/todos', function (response) {
-        $('body').html(response);
-      // renderTodos();
-      });
-
-    //   $.get('http://recruiting-api.nextcapital.com/users/' + user.id + '/todos.json?api_token=' + user.api_token, function (response) {
-    //   user.getTodos(response);
-    //   createSession(url, user);
-    // });
+      // get todos index page
+      renderTodosPage();
     },
 
     error: function(response) {
@@ -81,5 +67,13 @@ function submitMenu(menu) {
         $('#signup_error').html(resp_error);
       }
     }
+  });
+}
+
+function renderTodosPage() {
+  $.get('/todos', function (response) {
+    $('body').html(response);
+    renderNavBar(getCookie('user_api_token'));
+    renderTodos();
   });
 }

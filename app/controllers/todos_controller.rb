@@ -1,10 +1,8 @@
 class TodosController < ApplicationController
-  include UsersHelper
+  # include UsersHelper
   # before_filter :authorized?, :set_gon
 
   def index
-    @user = current_user
-    @todo = Todo.new
   end
 
   def new
