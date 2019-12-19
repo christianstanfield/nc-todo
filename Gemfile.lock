@@ -95,7 +95,7 @@ GEM
       rspec (>= 2.99, >= 2.14.2, < 4)
     pg (0.17.1)
     phantomjs (1.9.7.1)
-    rack (1.5.2)
+    rack (1.5.5)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.6)
